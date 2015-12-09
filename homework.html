@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Try this!</title>
+    <style>
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      font-size: 1.0em;
+    }
+
+    body {
+      display: table;
+      background-color: rgb(72,72,72);
+    }
+    .nav-bar{
+      text-align: center;
+      background: rgb(255, 153, 51);
+      padding: 1px;
+    }
+    .nav-bar p{
+      font-size: 1.5em;
+      text-shadow: 2px 4px 3px rgb(255, 217, 179);
+    }
+
+    .inMiddle{
+      text-align: center;
+      vertical-align: middle;
+    }
+    .button {
+      position: relative;
+      width: 10%;
+      height: 60px;
+      font-size: 22px;
+      color: white;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      background: #f39c12;
+      border: 0;
+      border-bottom: 2px solid #e8930c;
+      cursor: pointer;
+      -webkit-box-shadow: inset 0 -2px #e8930c;
+      box-shadow: inset 0 -2px #e8930c;
+    }
+    .button:hover {
+      background: rgb(255, 153, 51);
+      opacity: 0.9;
+    }
+
+    .ywc{
+      font-size: 3.0em;
+      color: orange;
+      font-family: 'Raleway',sans-serif;
+      font-weight: normal;
+      line-height: 48px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+    }
+
+    .nav-bar input[type="text"] {
+      padding: 10px;
+      border: solid 5px #c9c9c9;
+      transition: border 0.3s;
+    }
+
+    </style>
+  </head>
+  <body onclick="increaseSize()">
+    <nav class="nav-bar">
+      <p>
+        score : <input disabled type="text" id="score" value="0">
+      </p>
+    </nav>
+    <div class="inMiddle">
+      <h1 id="text" class="ywc" onkeydown="increaseSize()">
+         YWC
+       </h1>
+       <button id="button" onclick="increaseSize()" class="button">Pumb It!</button>
+    </div>
+    <script>
+      var text = document.getElementById("text");
+      var score = document.getElementById("score");
+
+      function increaseSize(){
+        if (text.style.fontSize == "") {
+          text.style.fontSize = "3.0em";
+        }
+        var size = parseFloat(text.style.fontSize);
+        var addition = 1;
+        text.style.fontSize = size + (addition) + "em";
+        var newScore = size*10;
+        console.log(newScore + " : " + score.value);
+        score.value = Math.round(Math.max(parseFloat(score.value),newScore));
+
+      }
+
+      function decreaseSize(){
+        if (parseFloat(text.style.fontSize) > 2.0) {
+          var size = parseFloat(text.style.fontSize);
+          var decrease = 0.0025*size;
+          text.style.fontSize = parseFloat(text.style.fontSize) - (decrease) + "em";
+        }
+      }
+
+      function doc_keyUp(e) {
+        if (e.keyCode == 32) {
+              increaseSize()
+          }
+      }
+
+      document.addEventListener('keyup', doc_keyUp, false);
+      setInterval(decreaseSize, 1);
+    </script>
+  </body>
+</html>
