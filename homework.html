@@ -100,6 +100,7 @@
         var size = parseFloat(text.style.fontSize);
         var addition = 0.5;
         text.style.fontSize = size + addition + "em";
+        var newScore = size*10;
         score.value = Math.round(Math.max(parseFloat(score.value),newScore));
 
       }
