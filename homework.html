@@ -58,54 +58,23 @@
       font-weight: normal;
       line-height: 48px;
       text-transform: uppercase;
-      text-shadow: 0 2px 0 0px hsl(330, 100%, 25%),
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-shadow: 0 0 5px rgb(255, 255, 255),
+                0 0 10px rgb(255, 255, 255), 0 0 15px rgb(255, 255, 255),
+                0 0 20px rgb(241, 145, 90), 0 0 30px rgb(241, 145, 90),
+                0 0 40px rgb(241, 145, 90), 0 0 50px rgb(241, 145, 90),
+                0 0 75px rgb(241, 145, 90);
 
-             0 3px 2px 0px hsla(330, 100%, 15%, 0.5),
-
-             /* next */
-
-             0 3px 0 3px hsl(350, 100%, 50%),
-
-             0 5px 0 3px hsl(350, 100%, 25%),
-
-             0 6px 2px 3px hsla(350, 100%, 15%, 0.5),
-
-             /* next */
-
-             0 6px 0 9px hsl(20, 100%, 50%),
-
-             0 8px 0 9px hsl(20, 100%, 25%),
-
-             0 9px 2px 9px hsla(20, 100%, 15%, 0.5),
-
-             /* next */
-
-             0 9px 0 18px hsl(50, 100%, 50%)
-
-             0 11px 0 18px hsl(50, 100%, 25%),
-
-             0 12px 2px 18px hsla(50, 100%, 15%, 0.5),
-
-             /* next */
-
-             0 12px 0 30px hsl(70, 100%, 50%),
-
-             0 14px 0 30px hsl(70, 100%, 25%),
-
-             0 15px 2px 30px hsla(70, 100%, 15%, 0.5),
-
-             /* next */
-
-             0 15px 0 45px hsl(90, 100%, 50%),
-
-             0 17px 0 45px hsl(90, 100%, 25%),
-
-             0 17px 2px 45px hsla(90, 100%, 15%, 0.5);
+      /*text-shadow: 0px 3px 0px #b2a98f,
+                 0px 14px 10px rgba(0,0,0,0.15),
+                 0px 24px 2px rgba(0,0,0,0.1),
+                 0px 34px 30px rgba(0,0,0,0.1);*/
     }
 
     .nav-bar input[type="text"] {
       padding: 10px;
-      border: solid 5px #c9c9c9;
+      border: solid 5px rgb(201, 201, 201);
       transition: border 0.3s;
     }
     .help{
@@ -148,7 +117,7 @@
       function decreaseSize(){
         if (parseFloat(text.style.fontSize) > 2.0) {
           var size = parseFloat(text.style.fontSize);
-          var decrease = size*size*0.00025;
+          var decrease = size*size*0.0005;
           text.style.fontSize = parseFloat(text.style.fontSize) - (decrease) + "em";
         }
       }
