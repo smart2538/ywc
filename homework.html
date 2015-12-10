@@ -23,7 +23,8 @@
     }
     .nav-bar p{
       font-size: 1.5em;
-      text-shadow: 2px 4px 3px rgb(255, 217, 179);
+      color: rgb(72,72,72);
+      text-shadow: 1px 2px 0px rgba(0,0,0,0.15);
     }
 
     .inMiddle{
@@ -34,7 +35,7 @@
       position: relative;
       width: 10%;
       height: 60px;
-      font-size: 22px;
+      font-size: 1.5em;
       color: white;
       text-align: center;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
@@ -57,24 +58,18 @@
       font-weight: normal;
       line-height: 48px;
       text-transform: uppercase;
-      text-shadow: 0 1px 0 #ccc,
-               0 2px 0 #c9c9c9,
-               0 3px 0 #bbb,
-               0 4px 0 #b9b9b9,
-               0 5px 0 #aaa,
-               0 6px 1px rgba(0,0,0,.1),
-               0 0 5px rgba(0,0,0,.1),
-               0 1px 3px rgba(0,0,0,.3),
-               0 3px 5px rgba(0,0,0,.2),
-               0 5px 10px rgba(0,0,0,.25),
-               0 10px 10px rgba(0,0,0,.2),
-               0 20px 20px rgba(0,0,0,.15);
+      text-shadow: 0px 0px 6px #f4ca88,
+                  2px 8px 6px rgba(0,0,0,0.2),
+                 0px -5px 35px rgba(255,255,255,0.3);
     }
 
     .nav-bar input[type="text"] {
       padding: 10px;
       border: solid 5px #c9c9c9;
       transition: border 0.3s;
+    }
+    .help{
+      color: rgb(128, 128, 128);
     }
 
     </style>
@@ -90,6 +85,9 @@
          YWC
        </h1>
        <button id="button" onclick="increaseSize()" class="button">Pumb It!</button>
+       <p class="help">
+         press spacebar to pumb.
+       </p>
     </div>
     <script>
       var text = document.getElementById("text");
@@ -100,10 +98,8 @@
           text.style.fontSize = "3.0em";
         }
         var size = parseFloat(text.style.fontSize);
-        var addition = 1;
-        text.style.fontSize = size + (addition) + "em";
-        var newScore = size*10;
-        console.log(newScore + " : " + score.value);
+        var addition = 0.5;
+        text.style.fontSize = size + addition + "em";
         score.value = Math.round(Math.max(parseFloat(score.value),newScore));
 
       }
@@ -111,7 +107,7 @@
       function decreaseSize(){
         if (parseFloat(text.style.fontSize) > 2.0) {
           var size = parseFloat(text.style.fontSize);
-          var decrease = 0.0025*size;
+          var decrease = size*size*0.00025;
           text.style.fontSize = parseFloat(text.style.fontSize) - (decrease) + "em";
         }
       }
@@ -121,8 +117,15 @@
               increaseSize()
           }
       }
+      function doc_keyDown(e) {
+        if (e.keyCode == 13) {
+              increaseSize()
+          }
+      }
+
 
       document.addEventListener('keyup', doc_keyUp, false);
+      document.addEventListener('keydown', doc_keyDown, false);
       setInterval(decreaseSize, 1);
     </script>
   </body>
